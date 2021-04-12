@@ -1,0 +1,146 @@
+WARNING 2021-04-12 20:18:37,953 log 228 Not Found: /favicon.ico
+WARNING 2021-04-12 20:18:37,954 basehttp 154 "GET /favicon.ico HTTP/1.1" 404 1973
+ERROR 2021-04-13 03:25:16,252 exception 118 Internal Server Error: /home/header/
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 757, in data
+    ret = super().data
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 261, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 675, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 675, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 511, in to_representation
+    for field in fields:
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 372, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 360, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1047, in get_fields
+    source, info, model, depth
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1192, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1309, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name ` is_site` is not valid for model `Nav`.
+ERROR 2021-04-13 03:25:16,727 basehttp 124 "GET /home/header/ HTTP/1.1" 500 21658
+ERROR 2021-04-13 03:27:00,891 exception 118 Internal Server Error: /home/header/
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 757, in data
+    ret = super().data
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 261, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 675, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 675, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 511, in to_representation
+    for field in fields:
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 372, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 360, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1047, in get_fields
+    source, info, model, depth
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1192, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1309, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name ` is_site` is not valid for model `Nav`.
+ERROR 2021-04-13 03:27:00,925 basehttp 124 "GET /home/header/ HTTP/1.1" 500 21658
+ERROR 2021-04-13 03:27:10,977 exception 118 Internal Server Error: /home/header/
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 757, in data
+    ret = super().data
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 261, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 675, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 675, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 511, in to_representation
+    for field in fields:
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 372, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 360, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1047, in get_fields
+    source, info, model, depth
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1192, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 1309, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name ` is_site` is not valid for model `Nav`.
+ERROR 2021-04-13 03:27:11,020 basehttp 124 "GET /home/header/ HTTP/1.1" 500 21658
