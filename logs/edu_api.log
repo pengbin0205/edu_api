@@ -144,3 +144,44 @@ Traceback (most recent call last):
     (field_name, model_class.__name__)
 django.core.exceptions.ImproperlyConfigured: Field name ` is_site` is not valid for model `Nav`.
 ERROR 2021-04-13 03:27:11,020 basehttp 124 "GET /home/header/ HTTP/1.1" 500 21658
+WARNING 2021-04-13 21:09:01,948 base 93 Not Found: /user.login/
+WARNING 2021-04-13 21:09:01,985 basehttp 124 "POST /user.login/ HTTP/1.1" 404 2308
+WARNING 2021-04-13 21:09:07,777 base 93 Not Found: /user.login/
+WARNING 2021-04-13 21:09:07,778 basehttp 124 "POST /user.login/ HTTP/1.1" 404 2308
+WARNING 2021-04-13 21:09:23,071 base 93 Not Found: /user.login/
+WARNING 2021-04-13 21:09:23,073 basehttp 124 "POST /user.login/ HTTP/1.1" 404 2308
+WARNING 2021-04-13 21:09:36,328 basehttp 124 "POST /user/login/ HTTP/1.1" 400 81
+WARNING 2021-04-13 21:16:57,463 basehttp 124 "POST /user/login/ HTTP/1.1" 400 67
+WARNING 2021-04-13 21:18:27,263 basehttp 124 "POST /user/login/ HTTP/1.1" 400 67
+WARNING 2021-04-13 23:35:39,164 basehttp 124 "POST /user/login/ HTTP/1.1" 400 67
+WARNING 2021-04-13 23:35:43,931 basehttp 124 "POST /user/login/ HTTP/1.1" 400 67
+WARNING 2021-04-14 00:56:51,168 basehttp 124 "POST /user/login/ HTTP/1.1" 400 41
+WARNING 2021-04-14 00:57:00,555 basehttp 124 "POST /user/login/ HTTP/1.1" 400 41
+WARNING 2021-04-14 01:28:33,014 basehttp 124 "POST /user/login/ HTTP/1.1" 400 81
+WARNING 2021-04-14 02:14:43,398 base 93 Not Found: /
+WARNING 2021-04-14 02:14:43,399 basehttp 124 "GET / HTTP/1.1" 404 2256
+WARNING 2021-04-14 02:14:43,551 base 93 Not Found: /favicon.ico
+WARNING 2021-04-14 02:14:43,557 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 2307
+WARNING 2021-04-14 02:14:52,354 basehttp 124 "GET /user/captcha/ HTTP/1.1" 400 11767
+WARNING 2021-04-14 02:17:15,849 basehttp 124 "GET /user/captcha/?account=admin HTTP/1.1" 400 11859
+WARNING 2021-04-14 02:18:01,827 basehttp 124 "GET /user/captcha/?account=admin/ HTTP/1.1" 400 11869
+WARNING 2021-04-14 02:18:12,717 basehttp 124 "GET /user/captcha/?account=admin/ HTTP/1.1" 400 11869
+WARNING 2021-04-14 02:18:13,806 basehttp 124 "GET /user/captcha/?account=admin/ HTTP/1.1" 400 11869
+WARNING 2021-04-14 02:24:59,015 base 93 Not Found: /
+WARNING 2021-04-14 02:24:59,016 basehttp 124 "GET / HTTP/1.1" 404 2256
+WARNING 2021-04-14 02:25:10,609 basehttp 124 "GET /user/captcha/ HTTP/1.1" 400 11767
+WARNING 2021-04-14 02:25:16,135 basehttp 124 "GET /user/captcha/?account=admin/ HTTP/1.1" 400 11869
+WARNING 2021-04-14 02:28:06,238 base 93 Not Found: /
+WARNING 2021-04-14 02:28:06,238 basehttp 124 "GET / HTTP/1.1" 404 2256
+WARNING 2021-04-14 02:28:31,806 basehttp 124 "GET /user/captcha/?account=pb/ HTTP/1.1" 400 11851
+WARNING 2021-04-14 02:28:35,129 basehttp 124 "GET /user/captcha/?account=pb/ HTTP/1.1" 400 11851
+WARNING 2021-04-14 02:29:00,358 basehttp 124 "GET /user/captcha/?account=pb/ HTTP/1.1" 400 11851
+WARNING 2021-04-14 02:29:29,571 basehttp 124 "GET /user/captcha/?account=pb/ HTTP/1.1" 400 11851
+WARNING 2021-04-14 02:30:49,031 base 93 Not Found: /
+WARNING 2021-04-14 02:30:49,034 basehttp 124 "GET / HTTP/1.1" 404 2256
+WARNING 2021-04-14 02:30:58,573 base 93 Not Found: /
+WARNING 2021-04-14 02:30:58,574 basehttp 124 "GET / HTTP/1.1" 404 2256
+WARNING 2021-04-14 02:30:59,058 base 93 Not Found: /favicon.ico
+WARNING 2021-04-14 02:30:59,059 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 2307
+WARNING 2021-04-14 02:31:13,730 basehttp 124 "GET /user/captcha/ HTTP/1.1" 400 11767
+WARNING 2021-04-14 02:31:40,869 basehttp 124 "GET /user/captcha/?account=pb/ HTTP/1.1" 400 11851

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import sys
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'edu_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "pb",
+        'NAME': "pengbin",
         'HOST': '127.0.0.1',
         'POSY': 3306,
         'USER': 'root',
@@ -147,9 +149,24 @@ REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "edu_api.utils.exceptions.custom_exception_handler"
 }
 
+#指将自定义的用户模型 注册为django默认的user表
+AUTH_USER_MODEL = 'user.UserInfo'
+
+# 自定义django的登录方式
+AUTHENTICATION_BACKENDS = [
+    'user.utils.UserModelBackend',
+]
 
 
+# JWT配置
+JWT_AUTH = {
+    # TOKEN有效时间
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds = 300),
 
+    # JWT登陆视图返回的数据的格式
+    'JWT_RESPONSE_PAYLOAD_HANDLER':
+        'user.utils.jwt_response_payload_handler',
+}
 
 
 
