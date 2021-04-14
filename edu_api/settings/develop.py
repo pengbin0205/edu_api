@@ -170,7 +170,26 @@ JWT_AUTH = {
 
 
 
-
+# redis相关配置
+CACHES = {
+    # 默认库
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        # redis服务器所在的ip:port  redis所在的linux系统的ip
+        "LOCATION": "redis://192.168.37.130:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    # 验证码库
+    "sms_code": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://192.168.37.130:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+}
 
 
 # 日志配置

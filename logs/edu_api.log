@@ -185,3 +185,124 @@ WARNING 2021-04-14 02:30:59,058 base 93 Not Found: /favicon.ico
 WARNING 2021-04-14 02:30:59,059 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 2307
 WARNING 2021-04-14 02:31:13,730 basehttp 124 "GET /user/captcha/ HTTP/1.1" 400 11767
 WARNING 2021-04-14 02:31:40,869 basehttp 124 "GET /user/captcha/?account=pb/ HTTP/1.1" 400 11851
+ERROR 2021-04-14 21:48:17,664 exception 118 Internal Server Error: /user/register/
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\generics.py", line 190, in post
+    return self.create(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 213, in save
+    self.instance = self.create(validated_data)
+  File "D:\x项目\edu_api\edu_api\apps\user\serializer.py", line 81, in create
+    jwt_payload_handler = api_settings.JWT_PAYLOAO_HANDLER
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\settings.py", line 209, in __getattr__
+    raise AttributeError("Invalid API setting: '%s'" % attr)
+AttributeError: Invalid API setting: 'JWT_PAYLOAO_HANDLER'
+ERROR 2021-04-14 21:48:18,066 basehttp 124 "POST /user/register/ HTTP/1.1" 500 20465
+ERROR 2021-04-14 21:50:24,198 exception 118 Internal Server Error: /user/register/
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\generics.py", line 190, in post
+    return self.create(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 213, in save
+    self.instance = self.create(validated_data)
+  File "D:\x项目\edu_api\edu_api\apps\user\serializer.py", line 81, in create
+    jwt_payload_handler = api_settings.JWT_PAYLOAO_HANDLER
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\settings.py", line 209, in __getattr__
+    raise AttributeError("Invalid API setting: '%s'" % attr)
+AttributeError: Invalid API setting: 'JWT_PAYLOAO_HANDLER'
+ERROR 2021-04-14 21:50:24,217 basehttp 124 "POST /user/register/ HTTP/1.1" 500 20522
+WARNING 2021-04-14 21:54:34,131 basehttp 124 "POST /user/register/ HTTP/1.1" 400 63
+WARNING 2021-04-14 21:55:17,898 basehttp 124 "GET /user/register/ HTTP/1.1" 405 12321
+WARNING 2021-04-14 21:55:18,167 base 93 Not Found: /favicon.ico
+WARNING 2021-04-14 21:55:18,168 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 2307
+WARNING 2021-04-14 21:55:51,994 basehttp 124 "GET /user/register/ HTTP/1.1" 405 12321
+WARNING 2021-04-14 21:57:09,717 basehttp 124 "POST /user/register/ HTTP/1.1" 400 63
+ERROR 2021-04-14 22:02:58,326 exception 118 Internal Server Error: /user/register/
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework_jwt\compat.py", line 33, in get_username
+    username = user.get_username()
+AttributeError: module 'user' has no attribute 'get_username'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 457, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 468, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\generics.py", line 190, in post
+    return self.create(request, *args, **kwargs)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework\serializers.py", line 213, in save
+    self.instance = self.create(validated_data)
+  File "D:\x项目\edu_api\edu_api\apps\user\serializer.py", line 84, in create
+    payload = jwt_payload_handler(user)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework_jwt\utils.py", line 34, in jwt_payload_handler
+    username = get_username(user)
+  File "C:\Users\12100\AppData\Local\Programs\Python\Python36\lib\site-packages\rest_framework_jwt\compat.py", line 35, in get_username
+    username = user.username
+AttributeError: module 'user' has no attribute 'username'
+ERROR 2021-04-14 22:02:58,706 basehttp 124 "POST /user/register/ HTTP/1.1" 500 20867
+WARNING 2021-04-14 22:06:31,453 basehttp 124 "POST /user/register/ HTTP/1.1" 400 63
+WARNING 2021-04-15 01:40:29,551 basehttp 124 "POST /user/register/ HTTP/1.1" 400 41
+WARNING 2021-04-15 03:11:20,758 basehttp 124 "GET /user/message/?phone=13710002111&time=60 HTTP/1.1" 400 53
+WARNING 2021-04-15 03:58:06,318 basehttp 124 "POST /user/register/ HTTP/1.1" 400 41

@@ -1,3 +1,11 @@
 # 轮播图数量 常量
 
 BANNER_NUM =3
+
+# 验证码发送的间隔时间
+SMS_EXPIRE_TIME = 60
+# 验证码存货有效时间
+MOBILE_EXPIRE_TIME = 600
+
+#API_KEY
+API_KEY = "40d6180426417bfc57d0744a362dc108"
