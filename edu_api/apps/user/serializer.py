@@ -95,6 +95,12 @@ class UserModelSerializer(ModelSerializer):
             payload = jwt_payload_handler(user)
             user.token = jwt_encode_handler(payload)
 
+            # TODO 为用户发送短信通知注册成功  将任务发送异步任务队列中执行
+            from my_task.sms.tasks import send_msg
+            # 调用短信发送异步任务
+            send_msg(phone, "123456")  # 需要参数则传递，不需要可以不传
+            # TODO 发放优惠券  发送邮件  分配会员等级
+
         return user
 
 

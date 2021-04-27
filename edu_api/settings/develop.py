@@ -43,12 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'django_filters',
 
     'home',
     'xadmin',
     'crispy_forms',
     'reversion',
     'user',
+    'course',
+    'cart',
+    'order',
+    'payments'
 ]
 
 MIDDLEWARE = [
@@ -146,7 +151,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     # 自定义全局异常处理
-    "EXCEPTION_HANDLER": "edu_api.utils.exceptions.custom_exception_handler"
+    "EXCEPTION_HANDLER": "edu_api.utils.exceptions.custom_exception_handler",
+    # 配置 jwt token的认证方式
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+    )
 }
 
 #指将自定义的用户模型 注册为django默认的user表
@@ -161,14 +170,29 @@ AUTHENTICATION_BACKENDS = [
 # JWT配置
 JWT_AUTH = {
     # TOKEN有效时间
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds = 300),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=30000),
 
     # JWT登陆视图返回的数据的格式
     'JWT_RESPONSE_PAYLOAD_HANDLER':
         'user.utils.jwt_response_payload_handler',
 }
 
-
+# 支付宝配置信息
+ALIAPY_CONFIG = {
+    # 网关地址
+    # "gateway_url": "https://openapi.alipay.com/gateway.do?",
+    "gateway_url": "https://openapi.alipaydev.com/gateway.do?",
+    "appid": "2016102200738366",
+    "app_notify_url": None,
+    "app_private_key_path": open(os.path.join(BASE_DIR, "apps/payments/keys/app_private_key.pem")).read(),
+    "alipay_public_key_path": open(os.path.join(BASE_DIR, "apps/payments/keys/alipay_public_key.pem")).read(),
+    "sign_type": "RSA2",
+    "debug": False,
+    # 支付成功后跳转的地址
+    "return_url": "http://localhost:8080/result",
+    # 同步回调地址
+    "notify_url": "http://127.0.0.1:8000/payments/result",  # 异步结果通知
+}
 
 # redis相关配置
 CACHES = {
@@ -185,6 +209,14 @@ CACHES = {
     "sms_code": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://192.168.37.130:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    # 购物车库
+    "cart": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://192.168.37.130:6379/5",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

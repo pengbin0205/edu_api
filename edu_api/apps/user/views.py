@@ -8,6 +8,7 @@ from rest_framework import status as http_status
 
 from edu_api.libs.geetest import GeetestLib
 from edu_api.settings import constants
+from edu_api.settings.constants import COUNT
 from edu_api.utils.message import Message
 from user.models import UserInfo
 from user.serializer import UserModelSerializer
@@ -28,7 +29,7 @@ class CaptchaAPIView(APIView):
     def get(self, request):
         """获取验证码方法"""
 
-        account = request.query_params.get('account')
+        account = request.query_params.get('username')
         # 根据前端输入的账号来获取对应的用户
         user = get_user_by_account(account)
 
@@ -66,30 +67,69 @@ class UserAPIView(CreateAPIView):
 
 
 class SendMessageAPIView(APIView):
-    """短信验证码"""
-    def get(self, request):
-        # 获取 redis链接
-        redis_connection =  get_redis_connection("sms_code")
-
-        #1. 判断该手机格式以及是否60s内发送过验证码
-        redis_connection.get("sms_code")
+    def get(self,request):
         phone = request.query_params.get("phone")
+        flag = request.query_params.get("flag")
+        print(flag,type(flag))
+        print(flag == "1")
+        if flag == '0':
+            user = UserInfo.objects.filter(phone=phone)
+            print(user)
+            print(not user)
+            if not user:
+                return Response({"msg":"手机号不存在，请重新输入或前往注册"},status=http_status.HTTP_400_BAD_REQUEST)
+        elif flag == '1':
+            user = UserInfo.objects.filter(phone=phone)
+            print(user)
+            if user:
+                return Response({"msg":"手机号存在，请前往登录"},status=http_status.HTTP_400_BAD_REQUEST)
 
-        #2. 生成随机验证码
+        # 获取redis链接
+        redis_connection = get_redis_connection("sms_code")
+        # 1.60秒限制判断
         phone_code = redis_connection.get("sms_%s" % phone)
-        print(phone_code)
+        redis_connection.get("sms_%s" % phone)
+        # 2.生成验证码
         if phone_code:
-            return Response({"message": "您已经在60s内发送过验证码了"}, status=http_status.HTTP_400_BAD_REQUEST)
+            return Response({"msg":"您已经在60秒内发送过验证码了~"})
         code = "%06d" % random.randint(0,999999)
-
-        #3. 将验证码保存到redis中
-        redis_connection.setex("sms_%s" % phone, constants.SMS_EXPIRE_TIME, code)
-        redis_connection.setex("mobile_%s" % phone, constants.MOBILE_EXPIRE_TIME, code)
-
-
-        #4. 调用发送短信方法，完成发送
+        count = COUNT
+        # 3.存redis
+        redis_connection.setex(f"sms_{phone}",60,code)
+        redis_connection.setex(f"mobile_{phone}",600,code)
+        redis_connection.setex(f"count_{phone}",600,count)
+        # 4.发送短信验证码
         message = Message("40d6180426417bfc57d0744a362dc108")
         status = message.send_message(phone, code)
+        # 5.返回结果
+        return Response({"message":"发送短信成功"})
 
-        #5. 响应发送的结果
-        return Response({"message": "发送短信成功"})
+class PhoneLoginAPIView(APIView):
+    def post(self,request):
+        phone = request.data.get("phone")
+        code = request.data.get("sms_code")
+        from django_redis import get_redis_connection
+        connection = get_redis_connection("sms_code")
+        redis_code = connection.get(f"mobile_{phone}")
+        if not redis_code:
+            return Response({"msg":"验证码已过期或不存在"}, status=http_status.HTTP_400_BAD_REQUEST)
+        redis_code = redis_code.decode()
+        redis_count = connection.get(f"count_{phone}")
+        print(redis_count.decode())
+        print(redis_code)
+        if redis_code != code:
+            redis_count = int(redis_count.decode())
+            connection.setex(f"count_{phone}", 600, redis_count-1)
+            if redis_count == 1:
+                connection.delete(f"mobile_{phone}")
+                connection.delete(f"mobile_{redis_code}")
+                connection.delete(f"count_{phone}")
+                return Response({"msg":"验证码错误次数过多，请重新发送"}, status=http_status.HTTP_400_BAD_REQUEST)
+            return Response({"msg": "验证码不正确请重新输入，剩余{redis_count-1}次机会"}, status=http_status.HTTP_400_BAD_REQUEST)
+        user = UserInfo.objects.get(phone=phone)
+        from rest_framework_jwt.settings import api_settings
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+        payload = jwt_payload_handler(user)
+        token = jwt_encode_handler(payload)
+        return Response({"username": user.username, "token": token})
